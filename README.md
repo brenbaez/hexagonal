@@ -55,8 +55,7 @@ Reglas de negocio:
 
 | EVENTO DE DOMINIO | ACCION DERIVADA (use case) |
 | --- | --- |
-| New Product Created |						
-| Product quantity has been modified |
+| New Product Created |
 | Product price has been modified |
 | New order created | (1)
 | Order cancelled | (2), (4)
