@@ -1,15 +1,15 @@
-package com.hexagonal.demo.shop.domain;
+package com.hexagonal.demo.shop.domain.cart.valueobject;
 
-import com.hexagonal.demo.shared.domain.IntValueObject;
+import com.hexagonal.demo.shop.domain.cart.AmountProducts;
 
 import java.util.HashMap;
 import java.util.Map;
 
 public class CartDetail {
 
-    private final HashMap<ProductId, AmountProducts> products;
+    private final Map<ProductId, AmountProducts> products;
 
-    public CartDetail(HashMap<ProductId, AmountProducts> newProducts) {
+    public CartDetail(Map<ProductId, AmountProducts> newProducts) {
         products = newProducts;
     }
 
@@ -19,6 +19,10 @@ public class CartDetail {
                 .map(AmountProducts::value)
                 .reduce(Integer::sum)
                 .orElse(0);
+    }
+
+    public Map<ProductId, AmountProducts> getProducts() {
+        return products;
     }
 
     public CartDetail withNewProducts(ProductId productId, AmountProducts amount) {

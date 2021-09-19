@@ -1,5 +1,8 @@
 package com.hexagonal.demo.shop.domain;
 
+import com.hexagonal.demo.shop.domain.cart.AmountProducts;
+import com.hexagonal.demo.shop.domain.cart.Cart;
+
 public class CartMother {
 
     public static Cart empty() {

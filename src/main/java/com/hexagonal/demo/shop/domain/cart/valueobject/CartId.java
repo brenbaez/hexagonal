@@ -1,4 +1,4 @@
-package com.hexagonal.demo.shop.domain;
+package com.hexagonal.demo.shop.domain.cart.valueobject;
 
 import com.hexagonal.demo.shared.domain.Identifier;
 

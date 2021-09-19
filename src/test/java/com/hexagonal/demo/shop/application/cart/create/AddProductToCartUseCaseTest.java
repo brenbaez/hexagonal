@@ -1,12 +1,12 @@
-package com.hexagonal.demo.shop.application;
+package com.hexagonal.demo.shop.application.cart.create;
 
-import com.hexagonal.demo.shop.domain.AmountProducts;
+import com.hexagonal.demo.shop.application.cart.create.AddProductToCartUseCase;
+import com.hexagonal.demo.shop.domain.cart.AmountProducts;
 import com.hexagonal.demo.shop.domain.CartMother;
-import com.hexagonal.demo.shop.domain.CartRepository;
-import com.hexagonal.demo.shop.domain.ProductId;
+import com.hexagonal.demo.shop.domain.cart.CartRepository;
 import com.hexagonal.demo.shop.domain.ProductIdMother;
 import com.hexagonal.demo.shop.domain.ProductMother;
-import com.hexagonal.demo.shop.domain.ProductRepository;
+import com.hexagonal.demo.shop.domain.cart.ProductRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -16,7 +16,6 @@ import java.util.Optional;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.times;
 import static org.mockito.Mockito.verify;

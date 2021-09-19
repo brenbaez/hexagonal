@@ -1,11 +1,11 @@
-package com.hexagonal.demo.shop.application;
+package com.hexagonal.demo.shop.application.cart.create;
 
-import com.hexagonal.demo.shop.domain.AmountProducts;
-import com.hexagonal.demo.shop.domain.Cart;
-import com.hexagonal.demo.shop.domain.CartId;
-import com.hexagonal.demo.shop.domain.CartRepository;
-import com.hexagonal.demo.shop.domain.ProductId;
-import com.hexagonal.demo.shop.domain.ProductRepository;
+import com.hexagonal.demo.shop.domain.cart.AmountProducts;
+import com.hexagonal.demo.shop.domain.cart.Cart;
+import com.hexagonal.demo.shop.domain.cart.valueobject.CartId;
+import com.hexagonal.demo.shop.domain.cart.CartRepository;
+import com.hexagonal.demo.shop.domain.cart.valueobject.ProductId;
+import com.hexagonal.demo.shop.domain.cart.ProductRepository;
 
 final class AddProductToCartUseCase {
 

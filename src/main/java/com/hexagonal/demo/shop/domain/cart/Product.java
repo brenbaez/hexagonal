@@ -1,5 +1,6 @@
-package com.hexagonal.demo.shop.domain;
+package com.hexagonal.demo.shop.domain.cart;
 
+import com.hexagonal.demo.shop.domain.cart.valueobject.ProductId;
 import lombok.Getter;
 
 public class Product {
