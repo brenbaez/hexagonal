@@ -1,11 +1,12 @@
 package com.hexagonal.shop.cart.application.create;
 
-import com.hexagonal.shop.cart.domain.AmountProducts;
 import com.hexagonal.shop.cart.domain.CartMother;
 import com.hexagonal.shop.cart.domain.CartRepository;
 import com.hexagonal.shop.cart.domain.ProductIdMother;
 import com.hexagonal.shop.cart.domain.ProductMother;
+import com.hexagonal.shop.cart.domain.ProductNotExist;
 import com.hexagonal.shop.cart.domain.ProductRepository;
+import com.hexagonal.shop.cart.domain.QuantityProduct;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -39,7 +40,7 @@ class AddProductToCartUseCaseTest {
         var cartId = cart.getId();
         var product = ProductMother.empty();
         var productId = product.getProductId();
-        var amount = new AmountProducts(1); // FIXME: 9/19/2021 amount negativo test? idem para los ids?
+        var amount = new QuantityProduct(1);
 
         when(cartRepository.get(cartId)).thenReturn(Optional.of(cart));
         when(productRepository.get(productId)).thenReturn(Optional.of(product));
@@ -48,7 +49,6 @@ class AddProductToCartUseCaseTest {
 
         verify(cartRepository, times(1)).save(cart);
 
-        // TODO: This test must check domain rules are right to avoid creating individual aggregate's tests
         var cartDetail = cart.getDetail();
         assertEquals(amount.value(), cartDetail.total());
     }
@@ -59,7 +59,7 @@ class AddProductToCartUseCaseTest {
         var cartId = cart.getId();
         var product = ProductMother.empty();
         var productId = product.getProductId();
-        var amount = new AmountProducts(1);
+        var amount = new QuantityProduct(1);
         var currentTotal = cart.getDetail().total();
 
         when(cartRepository.get(cartId)).thenReturn(Optional.of(cart));
@@ -74,17 +74,18 @@ class AddProductToCartUseCaseTest {
     }
 
     @Test
-    void shouldThrowErrorWhenProductNotExists(){
+    void shouldThrowErrorWhenProductNotExists() {
         var cart = CartMother.empty();
         var cartId = cart.getId();
+        var productIdRandom = ProductIdMother.random();
 
         when(cartRepository.get(cartId)).thenReturn(Optional.of(cart));
         when(productRepository.get(Mockito.any())).thenReturn(Optional.empty());
-        Exception exception = assertThrows(RuntimeException.class, () -> {
-            useCaseSUT.addProductToCart(cartId, ProductIdMother.random(), new AmountProducts(1));
+        Exception exception = assertThrows(ProductNotExist.class, () -> {
+            useCaseSUT.addProductToCart(cartId, productIdRandom, new QuantityProduct(1));
         });
 
-        String expectedMessage = "Product does not exist";
+        String expectedMessage = "The product <" + productIdRandom.value() + "> doesn't exist";
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));

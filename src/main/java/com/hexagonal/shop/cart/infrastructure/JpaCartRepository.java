@@ -1,6 +1,6 @@
 package com.hexagonal.shop.cart.infrastructure;
 
-import com.hexagonal.shop.cart.domain.AmountProducts;
+import com.hexagonal.shop.cart.domain.QuantityProduct;
 import com.hexagonal.shop.cart.domain.Cart;
 import com.hexagonal.shop.cart.domain.CartRepository;
 import com.hexagonal.shop.shared.domain.valueobject.CartId;
@@ -37,7 +37,7 @@ public class JpaCartRepository implements CartRepository {
         CartEntity cartEntity = cartEntityOp.get();
         Cart cart = new Cart(new CartId(cartEntity.getId()));
         List<ProductQuantityEntity> products = cartEntity.getProducts();
-        products.forEach(product -> cart.add(new ProductId(product.getId()), new AmountProducts(product.getQuantity())));
+        products.forEach(product -> cart.add(new ProductId(product.getId()), new QuantityProduct(product.getQuantity())));
         return Optional.of(cart);
     }
 
