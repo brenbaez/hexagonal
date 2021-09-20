@@ -5,7 +5,10 @@ import com.hexagonal.shop.cart.domain.CartMother;
 import com.hexagonal.shop.cart.domain.CartRepository;
 import com.hexagonal.shop.cart.domain.ProductIdMother;
 import com.hexagonal.shop.cart.domain.ProductMother;
+import com.hexagonal.shop.cart.domain.ProductNotExist;
 import com.hexagonal.shop.cart.domain.ProductRepository;
+import com.hexagonal.shop.cart.domain.valueobject.CartId;
+import com.hexagonal.shop.cart.domain.valueobject.ProductId;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -74,20 +77,57 @@ class AddProductToCartUseCaseTest {
     }
 
     @Test
-    void shouldThrowErrorWhenProductNotExists(){
+    void shouldThrowErrorWhenProductNotExists() {
         var cart = CartMother.empty();
         var cartId = cart.getId();
+        var productIdRandom = ProductIdMother.random();
 
         when(cartRepository.get(cartId)).thenReturn(Optional.of(cart));
         when(productRepository.get(Mockito.any())).thenReturn(Optional.empty());
-        Exception exception = assertThrows(RuntimeException.class, () -> {
-            useCaseSUT.addProductToCart(cartId, ProductIdMother.random(), new AmountProducts(1));
+        Exception exception = assertThrows(ProductNotExist.class, () -> {
+            useCaseSUT.addProductToCart(cartId, productIdRandom, new AmountProducts(1));
         });
 
-        String expectedMessage = "Product does not exist";
+        String expectedMessage = "The product <" + productIdRandom.value() + "> doesn't exist";
         String actualMessage = exception.getMessage();
 
         assertTrue(actualMessage.contains(expectedMessage));
+        verify(cartRepository, never()).save(cart);
+    }
+
+    @Test
+    void shouldShowErrorInvalidProductId() {
+        var cart = CartMother.empty();
+        var cartId = cart.getId();
+        var amount = new AmountProducts(1);
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            useCaseSUT.addProductToCart(cartId, new ProductId("i'm an invalid id"), new AmountProducts(-5));
+        });
+
+        String expectedMessage = "Products quantity cannot be negative or zero";
+        String actualMessage = exception.getMessage();
+
+        // assertTrue(actualMessage.contains(expectedMessage));
+
+        verify(cartRepository, never()).save(cart);
+    }
+
+    @Test
+    void shouldShowErrorInvalidCartId() {
+        var cart = CartMother.empty();
+        var product = ProductMother.empty();
+        var productId = product.getProductId();
+
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
+            useCaseSUT.addProductToCart(new CartId("i'm an invalid id"), productId, new AmountProducts(-5));
+        });
+
+        String expectedMessage = "Products quantity cannot be negative or zero";
+        String actualMessage = exception.getMessage();
+
+        //  assertTrue(actualMessage.contains(expectedMessage));
+
         verify(cartRepository, never()).save(cart);
     }
 
