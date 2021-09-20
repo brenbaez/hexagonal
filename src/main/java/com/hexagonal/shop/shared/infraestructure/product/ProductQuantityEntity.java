@@ -1,6 +1,6 @@
 package com.hexagonal.shop.shared.infraestructure.product;
 
-import com.hexagonal.shop.shared.domain.valueobject.ProductEntity;
+import com.hexagonal.shop.shared.domain.product.ProductEntity;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

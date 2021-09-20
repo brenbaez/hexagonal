@@ -2,12 +2,11 @@ package com.hexagonal.shop.cart.domain;
 
 import com.hexagonal.shop.shared.domain.AggregateRoot;
 import com.hexagonal.shop.shared.domain.cart.PurchaseConfirmedDomainEvent;
-import com.hexagonal.shop.cart.domain.valueobject.Address;
-import com.hexagonal.shop.cart.domain.valueobject.CartDetail;
-import com.hexagonal.shop.cart.domain.valueobject.CartId;
-import com.hexagonal.shop.cart.domain.valueobject.DiscountCode;
-import com.hexagonal.shop.cart.domain.valueobject.Email;
-import com.hexagonal.shop.cart.domain.valueobject.ProductId;
+import com.hexagonal.shop.shared.domain.valueobject.Address;
+import com.hexagonal.shop.shared.domain.valueobject.CartId;
+import com.hexagonal.shop.shared.domain.valueobject.DiscountCode;
+import com.hexagonal.shop.shared.domain.valueobject.Email;
+import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 
 import java.util.HashMap;
 

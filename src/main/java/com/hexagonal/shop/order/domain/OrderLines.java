@@ -1,7 +1,7 @@
 package com.hexagonal.shop.order.domain;
 
 import com.hexagonal.shop.cart.domain.AmountProducts;
-import com.hexagonal.shop.cart.domain.valueobject.ProductId;
+import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 import com.hexagonal.shop.shared.domain.product.Product;
 
 import java.util.ArrayList;

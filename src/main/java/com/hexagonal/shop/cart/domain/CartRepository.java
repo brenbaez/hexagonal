@@ -1,6 +1,6 @@
 package com.hexagonal.shop.cart.domain;
 
-import com.hexagonal.shop.cart.domain.valueobject.CartId;
+import com.hexagonal.shop.shared.domain.valueobject.CartId;
 
 import java.util.Optional;
 

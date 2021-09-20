@@ -1,6 +1,6 @@
-package com.hexagonal.shop.cart.domain.valueobject;
+package com.hexagonal.shop.cart.domain;
 
-import com.hexagonal.shop.cart.domain.AmountProducts;
+import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 
 import java.util.HashMap;
 import java.util.Map;

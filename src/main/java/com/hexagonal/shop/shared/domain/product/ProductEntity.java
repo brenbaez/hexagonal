@@ -1,4 +1,4 @@
-package com.hexagonal.shop.shared.domain.valueobject;
+package com.hexagonal.shop.shared.domain.product;
 
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
