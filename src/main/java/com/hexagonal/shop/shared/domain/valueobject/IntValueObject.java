@@ -5,6 +5,7 @@ public class IntValueObject {
     private Integer value;
 
     public IntValueObject(Integer value) {
+        ensureValid(value);
         this.value = value;
     }
 
