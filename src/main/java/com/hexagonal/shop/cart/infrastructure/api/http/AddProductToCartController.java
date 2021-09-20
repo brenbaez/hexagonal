@@ -2,8 +2,8 @@ package com.hexagonal.shop.cart.infrastructure.api.http;
 
 import com.hexagonal.shop.cart.application.create.AddProductToCartUseCase;
 import com.hexagonal.shop.cart.domain.AmountProducts;
-import com.hexagonal.shop.cart.domain.valueobject.CartId;
-import com.hexagonal.shop.cart.domain.valueobject.ProductId;
+import com.hexagonal.shop.shared.domain.valueobject.CartId;
+import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;

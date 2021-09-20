@@ -4,7 +4,7 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hexagonal.shop.cart.domain.Cart;
 import com.hexagonal.shop.cart.domain.CartRepository;
-import com.hexagonal.shop.cart.domain.valueobject.CartId;
+import com.hexagonal.shop.shared.domain.valueobject.CartId;
 import org.springframework.stereotype.Repository;
 
 import java.io.FileInputStream;

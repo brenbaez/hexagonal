@@ -3,10 +3,10 @@ package com.hexagonal.shop.cart.infrastructure;
 import com.hexagonal.shop.cart.domain.AmountProducts;
 import com.hexagonal.shop.cart.domain.Cart;
 import com.hexagonal.shop.cart.domain.CartRepository;
-import com.hexagonal.shop.cart.domain.valueobject.CartId;
-import com.hexagonal.shop.cart.domain.valueobject.ProductId;
+import com.hexagonal.shop.shared.domain.valueobject.CartId;
+import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 import com.hexagonal.shop.shared.infraestructure.product.JpaProductEntityRepository;
-import com.hexagonal.shop.shared.domain.valueobject.ProductEntity;
+import com.hexagonal.shop.shared.domain.product.ProductEntity;
 import com.hexagonal.shop.shared.infraestructure.product.ProductQuantityEntity;
 import org.springframework.stereotype.Repository;
 

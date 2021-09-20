@@ -1,7 +1,7 @@
 package com.hexagonal.shop.shared.infraestructure.product;
 
 import com.hexagonal.shop.cart.domain.ProductRepository;
-import com.hexagonal.shop.cart.domain.valueobject.ProductId;
+import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 import com.hexagonal.shop.shared.domain.product.Product;
 import org.springframework.stereotype.Repository;
 

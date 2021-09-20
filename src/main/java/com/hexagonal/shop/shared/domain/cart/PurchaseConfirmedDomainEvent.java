@@ -2,11 +2,11 @@ package com.hexagonal.shop.shared.domain.cart;
 
 import com.hexagonal.shop.shared.domain.bus.event.DomainEvent;
 import com.hexagonal.shop.cart.domain.AmountProducts;
-import com.hexagonal.shop.cart.domain.valueobject.Address;
-import com.hexagonal.shop.cart.domain.valueobject.CartId;
-import com.hexagonal.shop.cart.domain.valueobject.DiscountCode;
-import com.hexagonal.shop.cart.domain.valueobject.Email;
-import com.hexagonal.shop.cart.domain.valueobject.ProductId;
+import com.hexagonal.shop.shared.domain.valueobject.Address;
+import com.hexagonal.shop.shared.domain.valueobject.CartId;
+import com.hexagonal.shop.shared.domain.valueobject.DiscountCode;
+import com.hexagonal.shop.shared.domain.valueobject.Email;
+import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 import lombok.Getter;
 
 import java.io.Serializable;

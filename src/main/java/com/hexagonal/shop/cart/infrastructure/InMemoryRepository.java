@@ -2,7 +2,7 @@ package com.hexagonal.shop.cart.infrastructure;
 
 import com.hexagonal.shop.cart.domain.Cart;
 import com.hexagonal.shop.cart.domain.CartRepository;
-import com.hexagonal.shop.cart.domain.valueobject.CartId;
+import com.hexagonal.shop.shared.domain.valueobject.CartId;
 
 import java.util.HashMap;
 import java.util.Map;
