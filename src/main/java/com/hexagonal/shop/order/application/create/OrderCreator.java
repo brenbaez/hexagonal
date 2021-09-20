@@ -1,6 +1,6 @@
 package com.hexagonal.shop.order.application.create;
 
-import com.hexagonal.shop.cart.domain.AmountProducts;
+import com.hexagonal.shop.cart.domain.QuantityProduct;
 import com.hexagonal.shop.shared.domain.valueobject.Address;
 import com.hexagonal.shop.shared.domain.valueobject.DiscountCode;
 import com.hexagonal.shop.shared.domain.valueobject.Email;
@@ -23,7 +23,7 @@ public class OrderCreator {
         this.productRepository = productRepository;
     }
 
-    public void create(String aggregateId, Map<ProductId, AmountProducts> fullDetail, Address address,
+    public void create(String aggregateId, Map<ProductId, QuantityProduct> fullDetail, Address address,
                        DiscountCode discountCode, Email email) {
         List<Product> products = get(fullDetail.keySet());
         Order order = new Order(products, fullDetail, aggregateId, address, discountCode, email);

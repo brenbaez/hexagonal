@@ -1,6 +1,6 @@
 package com.hexagonal.shop.cart.application.create;
 
-import com.hexagonal.shop.cart.domain.AmountProducts;
+import com.hexagonal.shop.cart.domain.QuantityProduct;
 import com.hexagonal.shop.cart.domain.Cart;
 import com.hexagonal.shop.cart.domain.CartRepository;
 import com.hexagonal.shop.cart.domain.ProductNotExist;
@@ -18,7 +18,7 @@ public final class AddProductToCartUseCase {
         this.productRepository = productRepository;
     }
 
-    public void addProductToCart(CartId cartId, ProductId productId, AmountProducts amount) {
+    public void addProductToCart(CartId cartId, ProductId productId, QuantityProduct amount) {
         Cart cart = getCart(cartId);
         validateProductExistence(productId);
         cart.add(productId, amount);

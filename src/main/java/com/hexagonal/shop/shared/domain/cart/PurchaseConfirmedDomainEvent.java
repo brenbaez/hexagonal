@@ -1,7 +1,7 @@
 package com.hexagonal.shop.shared.domain.cart;
 
 import com.hexagonal.shop.shared.domain.bus.event.DomainEvent;
-import com.hexagonal.shop.cart.domain.AmountProducts;
+import com.hexagonal.shop.cart.domain.QuantityProduct;
 import com.hexagonal.shop.shared.domain.valueobject.Address;
 import com.hexagonal.shop.shared.domain.valueobject.CartId;
 import com.hexagonal.shop.shared.domain.valueobject.DiscountCode;
@@ -16,13 +16,13 @@ import java.util.stream.Collectors;
 
 @Getter //to simplify
 public class PurchaseConfirmedDomainEvent extends DomainEvent {
-    private final Map<ProductId, AmountProducts> fullDetail;
+    private final Map<ProductId, QuantityProduct> fullDetail;
     private final DiscountCode discountCode;
     private final Email email;
     private final Address address;
 
     public PurchaseConfirmedDomainEvent(CartId id,
-                                        Map<ProductId, AmountProducts> fullDetail,
+                                        Map<ProductId, QuantityProduct> fullDetail,
                                         DiscountCode discountCode,
                                         Email email, Address address) {
         super(id.value());
@@ -32,7 +32,7 @@ public class PurchaseConfirmedDomainEvent extends DomainEvent {
         this.address = address;
     }
 
-    public PurchaseConfirmedDomainEvent(String aggregateId, String eventId, String occurredOn, Map<ProductId, AmountProducts> fullDetail, DiscountCode discountCode, Email email, Address address) {
+    public PurchaseConfirmedDomainEvent(String aggregateId, String eventId, String occurredOn, Map<ProductId, QuantityProduct> fullDetail, DiscountCode discountCode, Email email, Address address) {
         super(aggregateId, eventId, occurredOn);
         this.fullDetail = fullDetail;
         this.discountCode = discountCode;
@@ -59,7 +59,7 @@ public class PurchaseConfirmedDomainEvent extends DomainEvent {
                 aggregateId,
                 eventId,
                 occurredOn,
-                ( Map<ProductId, AmountProducts>)body.get("fullDetail"),
+                ( Map<ProductId, QuantityProduct>)body.get("fullDetail"),
                 (DiscountCode)body.get("discountCode"),
                 (Email) body.get("email"),
                 (Address)body.get("address")

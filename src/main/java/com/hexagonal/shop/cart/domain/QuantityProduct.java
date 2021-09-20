@@ -2,8 +2,8 @@ package com.hexagonal.shop.cart.domain;
 
 import com.hexagonal.shop.shared.domain.valueobject.IntValueObject;
 
-public class AmountProducts extends IntValueObject {
-    public AmountProducts(Integer value) {
+public class QuantityProduct extends IntValueObject {
+    public QuantityProduct(Integer value) {
         super(value);
     }
 

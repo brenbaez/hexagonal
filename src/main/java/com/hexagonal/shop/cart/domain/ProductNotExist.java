@@ -1,7 +1,7 @@
 package com.hexagonal.shop.cart.domain;
 
-import com.hexagonal.shop.cart.domain.valueobject.ProductId;
 import com.hexagonal.shop.shared.domain.DomainError;
+import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 
 public final class ProductNotExist extends DomainError {
 
