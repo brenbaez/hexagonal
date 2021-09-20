@@ -1,6 +1,6 @@
 package com.hexagonal.shop.shared.domain.product;
 
-import com.hexagonal.shop.cart.domain.valueobject.ProductId;
+import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 import com.hexagonal.shop.order.domain.valueobject.Price;
 import com.hexagonal.shop.order.domain.valueobject.ProductName;
 import lombok.Getter;

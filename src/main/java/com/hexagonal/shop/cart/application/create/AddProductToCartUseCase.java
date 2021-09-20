@@ -4,8 +4,8 @@ import com.hexagonal.shop.cart.domain.AmountProducts;
 import com.hexagonal.shop.cart.domain.Cart;
 import com.hexagonal.shop.cart.domain.CartRepository;
 import com.hexagonal.shop.cart.domain.ProductRepository;
-import com.hexagonal.shop.cart.domain.valueobject.CartId;
-import com.hexagonal.shop.cart.domain.valueobject.ProductId;
+import com.hexagonal.shop.shared.domain.valueobject.CartId;
+import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 
 public final class AddProductToCartUseCase {
 
