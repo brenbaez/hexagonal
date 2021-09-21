@@ -10,6 +10,6 @@ public class ProductQuantity extends IntValueObject {
     @Override
     protected void ensureValid(Integer value) {
         if (value <= 0)
-            throw new IllegalArgumentException("Products quantity cannot be negative or zero");
+            throw new ProductQuantityNegative(value);
     }
 }
