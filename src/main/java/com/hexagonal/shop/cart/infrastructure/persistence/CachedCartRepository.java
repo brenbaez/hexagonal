@@ -1,4 +1,4 @@
-package com.hexagonal.shop.cart.infrastructure;
+package com.hexagonal.shop.cart.infrastructure.persistence;
 
 import com.hexagonal.shop.cart.domain.Cart;
 import com.hexagonal.shop.cart.domain.CartRepository;

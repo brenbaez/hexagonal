@@ -1,6 +1,6 @@
-package com.hexagonal.shop.cart.infrastructure;
+package com.hexagonal.shop.cart.infrastructure.persistence.entity;
 
-import com.hexagonal.shop.shared.infraestructure.product.ProductQuantityEntity;
+import com.hexagonal.shop.shared.infraestructure.product.persistence.ProductQuantityEntity;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;

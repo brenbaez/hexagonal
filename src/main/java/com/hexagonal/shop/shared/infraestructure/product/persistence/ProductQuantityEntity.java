@@ -1,4 +1,4 @@
-package com.hexagonal.shop.shared.infraestructure.product;
+package com.hexagonal.shop.shared.infraestructure.product.persistence;
 
 import com.hexagonal.shop.shared.domain.product.ProductEntity;
 import lombok.EqualsAndHashCode;

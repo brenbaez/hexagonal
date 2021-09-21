@@ -1,4 +1,4 @@
-package com.hexagonal.shop.cart.infrastructure;
+package com.hexagonal.shop.cart.infrastructure.persistence;
 
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
