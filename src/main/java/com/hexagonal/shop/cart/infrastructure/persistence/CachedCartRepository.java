@@ -3,13 +3,11 @@ package com.hexagonal.shop.cart.infrastructure.persistence;
 import com.hexagonal.shop.cart.domain.Cart;
 import com.hexagonal.shop.cart.domain.CartRepository;
 import com.hexagonal.shop.shared.domain.valueobject.CartId;
-import org.springframework.stereotype.Repository;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
 
-@Repository("cachedCartRepository")
 public class CachedCartRepository implements CartRepository {
 
     private Map<String, Cart> cachedCarts = new HashMap<>();
