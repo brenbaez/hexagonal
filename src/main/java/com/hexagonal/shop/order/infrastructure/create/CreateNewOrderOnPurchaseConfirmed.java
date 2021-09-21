@@ -16,6 +16,6 @@ public class CreateNewOrderOnPurchaseConfirmed {
 
     @EventListener
     public void on(PurchaseConfirmedDomainEvent event) {
-        creator.create(event.getAggregateId(), event.getFullDetail(), event.getAddress(), event.getDiscountCode(), event.getEmail());
+        creator.create(event.getAggregateId(), event.getQuantityPerProduct(), event.getAddress(), event.getDiscountCode(), event.getEmail());
     }
 }

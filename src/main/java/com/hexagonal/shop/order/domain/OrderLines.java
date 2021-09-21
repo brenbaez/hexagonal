@@ -1,6 +1,6 @@
 package com.hexagonal.shop.order.domain;
 
-import com.hexagonal.shop.cart.domain.QuantityProduct;
+import com.hexagonal.shop.cart.domain.ProductQuantity;
 import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 import com.hexagonal.shop.shared.domain.product.Product;
 
@@ -17,10 +17,10 @@ public class OrderLines {
         this.orderLines = new ArrayList<>();
     }
 
-    public void create(List<Product> products, Map<ProductId, QuantityProduct> fullDetail) {
+    public void create(List<Product> products, Map<ProductId, ProductQuantity> quantityPerProduct) {
         orderLines = products
                 .stream()
-                .map(product -> new OrderLine(product, fullDetail.get(product.getProductId())))
+                .map(product -> new OrderLine(product, quantityPerProduct.get(product.getProductId())))
                 .collect(Collectors.toList());
     }
 

@@ -1,7 +1,7 @@
 package com.hexagonal.shop.cart.infrastructure.api.http;
 
 import com.hexagonal.shop.cart.application.create.AddProductToCartUseCase;
-import com.hexagonal.shop.cart.domain.QuantityProduct;
+import com.hexagonal.shop.cart.domain.ProductQuantity;
 import com.hexagonal.shop.shared.domain.valueobject.CartId;
 import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 import org.springframework.http.ResponseEntity;
@@ -24,7 +24,7 @@ public class AddProductToCartController {
         addProductToCartUseCase.addProductToCart(
                 new CartId("cartId"),
                 new ProductId("productId"),
-                new QuantityProduct(1));
+                new ProductQuantity(1));
         return ResponseEntity.ok().build();
     }
 }

@@ -7,26 +7,26 @@ import java.util.Map;
 
 public class CartDetail {
 
-    private final Map<ProductId, QuantityProduct> products;
+    private final Map<ProductId, ProductQuantity> products;
 
-    public CartDetail(Map<ProductId, QuantityProduct> newProducts) {
+    public CartDetail(Map<ProductId, ProductQuantity> newProducts) {
         products = newProducts;
     }
 
     public Integer total() {
         return products.values()
                 .stream()
-                .map(QuantityProduct::value)
+                .map(ProductQuantity::value)
                 .reduce(Integer::sum)
                 .orElse(0);
     }
 
-    public Map<ProductId, QuantityProduct> getProducts() {
+    public Map<ProductId, ProductQuantity> getProducts() {
         return products;
     }
 
-    public CartDetail withNewProducts(ProductId productId, QuantityProduct amount) {
-        HashMap<ProductId, QuantityProduct> newProducts = new HashMap<ProductId, QuantityProduct>(products);
+    public CartDetail withNewProducts(ProductId productId, ProductQuantity amount) {
+        HashMap<ProductId, ProductQuantity> newProducts = new HashMap<ProductId, ProductQuantity>(products);
 
         newProducts.put(productId, amount);
 

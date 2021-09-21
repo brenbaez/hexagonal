@@ -6,7 +6,7 @@ import com.hexagonal.shop.cart.domain.ProductIdMother;
 import com.hexagonal.shop.cart.domain.ProductMother;
 import com.hexagonal.shop.cart.domain.ProductNotExist;
 import com.hexagonal.shop.cart.domain.ProductRepository;
-import com.hexagonal.shop.cart.domain.QuantityProduct;
+import com.hexagonal.shop.cart.domain.ProductQuantity;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -40,7 +40,7 @@ class AddProductToCartUseCaseTest {
         var cartId = cart.getId();
         var product = ProductMother.empty();
         var productId = product.getProductId();
-        var amount = new QuantityProduct(1);
+        var amount = new ProductQuantity(1);
 
         when(cartRepository.get(cartId)).thenReturn(Optional.of(cart));
         when(productRepository.get(productId)).thenReturn(Optional.of(product));
@@ -59,7 +59,7 @@ class AddProductToCartUseCaseTest {
         var cartId = cart.getId();
         var product = ProductMother.empty();
         var productId = product.getProductId();
-        var amount = new QuantityProduct(1);
+        var amount = new ProductQuantity(1);
         var currentTotal = cart.getDetail().total();
 
         when(cartRepository.get(cartId)).thenReturn(Optional.of(cart));
@@ -82,7 +82,7 @@ class AddProductToCartUseCaseTest {
         when(cartRepository.get(cartId)).thenReturn(Optional.of(cart));
         when(productRepository.get(Mockito.any())).thenReturn(Optional.empty());
         Exception exception = assertThrows(ProductNotExist.class, () -> {
-            useCaseSUT.addProductToCart(cartId, productIdRandom, new QuantityProduct(1));
+            useCaseSUT.addProductToCart(cartId, productIdRandom, new ProductQuantity(1));
         });
 
         String expectedMessage = "The product <" + productIdRandom.value() + "> doesn't exist";

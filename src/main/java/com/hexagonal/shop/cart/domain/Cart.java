@@ -22,7 +22,7 @@ public class Cart extends AggregateRoot {
         state = CartState.OPEN;
     }
 
-    public void add(ProductId productId, QuantityProduct amount) {
+    public void add(ProductId productId, ProductQuantity amount) {
         ensureHasState(CartState.OPEN);
         cartDetail = cartDetail.withNewProducts(productId, amount);
     }
