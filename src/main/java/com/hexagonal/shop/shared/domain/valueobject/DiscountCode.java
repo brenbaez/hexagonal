@@ -8,7 +8,7 @@ public class DiscountCode extends StringValueObject {
     @Override
     protected void ensureValid(String value) {
         if (value.length() != 10)
-            throw new IllegalArgumentException("Discount Code not valid");
+            throw new InvalidDiscountCode(value);
     }
 
 }

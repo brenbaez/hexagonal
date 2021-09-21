@@ -16,6 +16,11 @@ public class Identifier {
     }
 
     private void ensureValidUuid(String value) {
-        UUID.fromString(value);
+        try {
+            UUID.fromString(value);
+        }
+        catch (IllegalArgumentException e) {
+            throw new InvalidIdentifier(value);
+        }
     }
 }

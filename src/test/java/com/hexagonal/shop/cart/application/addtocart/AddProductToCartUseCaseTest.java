@@ -5,8 +5,8 @@ import com.hexagonal.shop.cart.domain.CartRepository;
 import com.hexagonal.shop.cart.domain.ProductIdMother;
 import com.hexagonal.shop.cart.domain.ProductMother;
 import com.hexagonal.shop.cart.domain.ProductNotExist;
-import com.hexagonal.shop.cart.domain.ProductRepository;
 import com.hexagonal.shop.cart.domain.ProductQuantity;
+import com.hexagonal.shop.cart.domain.ProductRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -91,5 +91,4 @@ class AddProductToCartUseCaseTest {
         assertTrue(actualMessage.contains(expectedMessage));
         verify(cartRepository, never()).save(cart);
     }
-
 }
