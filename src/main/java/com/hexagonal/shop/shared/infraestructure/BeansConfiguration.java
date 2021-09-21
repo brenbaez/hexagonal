@@ -1,6 +1,6 @@
 package com.hexagonal.shop.shared.infraestructure;
 
-import com.hexagonal.shop.cart.application.create.AddProductToCartUseCase;
+import com.hexagonal.shop.cart.application.addtocart.AddProductToCartUseCase;
 import com.hexagonal.shop.cart.domain.CartRepository;
 import com.hexagonal.shop.cart.domain.ProductRepository;
 import org.springframework.beans.factory.annotation.Qualifier;

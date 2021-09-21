@@ -8,7 +8,7 @@ import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 import com.hexagonal.shop.order.domain.Order;
 import com.hexagonal.shop.order.domain.OrderRepository;
 import com.hexagonal.shop.shared.domain.product.Product;
-import com.hexagonal.shop.shared.domain.product.ProductRepository;
+import com.hexagonal.shop.order.domain.ProductRepository;
 
 import java.util.List;
 import java.util.Map;

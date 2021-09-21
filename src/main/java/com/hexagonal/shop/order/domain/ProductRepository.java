@@ -1,5 +1,6 @@
-package com.hexagonal.shop.shared.domain.product;
+package com.hexagonal.shop.order.domain;
 
+import com.hexagonal.shop.shared.domain.product.Product;
 import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 
 import java.util.List;

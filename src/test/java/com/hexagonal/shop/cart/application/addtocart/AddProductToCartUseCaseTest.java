@@ -1,4 +1,4 @@
-package com.hexagonal.shop.cart.application.create;
+package com.hexagonal.shop.cart.application.addtocart;
 
 import com.hexagonal.shop.cart.domain.CartMother;
 import com.hexagonal.shop.cart.domain.CartRepository;

@@ -1,6 +1,6 @@
 package com.hexagonal.shop.cart.infrastructure.api.http;
 
-import com.hexagonal.shop.cart.application.create.AddProductToCartUseCase;
+import com.hexagonal.shop.cart.application.addtocart.AddProductToCartUseCase;
 import com.hexagonal.shop.cart.domain.ProductQuantity;
 import com.hexagonal.shop.shared.domain.valueobject.CartId;
 import com.hexagonal.shop.shared.domain.valueobject.ProductId;
