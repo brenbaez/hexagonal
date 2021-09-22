@@ -25,11 +25,12 @@ public class CartDetail {
         return products;
     }
 
-    public CartDetail withNewProducts(ProductId productId, ProductQuantity amount) {
+    public CartDetail withNewProducts(ProductId productId, ProductQuantity quantity) {
         HashMap<ProductId, ProductQuantity> newProducts = new HashMap<ProductId, ProductQuantity>(products);
-
-        newProducts.put(productId, amount);
-
+        if (newProducts.containsKey(productId))
+            newProducts.put(productId, new ProductQuantity(newProducts.get(productId).value() + quantity.value()));
+        else
+            newProducts.put(productId, quantity);
         return new CartDetail(newProducts);
     }
 }

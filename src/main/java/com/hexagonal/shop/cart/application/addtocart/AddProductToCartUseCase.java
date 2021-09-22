@@ -3,7 +3,7 @@ package com.hexagonal.shop.cart.application.addtocart;
 import com.hexagonal.shop.cart.domain.ProductQuantity;
 import com.hexagonal.shop.cart.domain.Cart;
 import com.hexagonal.shop.cart.domain.CartRepository;
-import com.hexagonal.shop.cart.domain.ProductNotExist;
+import com.hexagonal.shop.shared.domain.exception.ProductNotExist;
 import com.hexagonal.shop.cart.domain.ProductRepository;
 import com.hexagonal.shop.shared.domain.valueobject.CartId;
 import com.hexagonal.shop.shared.domain.valueobject.ProductId;

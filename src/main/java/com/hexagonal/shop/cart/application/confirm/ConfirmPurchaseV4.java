@@ -6,6 +6,7 @@ import com.hexagonal.shop.cart.domain.CartRepository;
 import com.hexagonal.shop.order.domain.Order;
 import com.hexagonal.shop.order.domain.OrderRepository;
 import com.hexagonal.shop.order.domain.ProductRepository;
+import com.hexagonal.shop.shared.domain.DiscountNextPurchase;
 import com.hexagonal.shop.shared.domain.EmailNotifier;
 import com.hexagonal.shop.shared.domain.product.Product;
 import com.hexagonal.shop.shared.domain.valueobject.Address;
@@ -17,22 +18,25 @@ import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 import java.util.List;
 import java.util.Set;
 
-public class ConfirmPurchaseV3 {
+public class ConfirmPurchaseV4 {
 
     private final CartRepository cartRepository;
     private final OrderRepository orderRepository;
     private final ProductRepository productRepository;
     private final EmailNotifier emailNotifier;
+    private final DiscountNextPurchase discountNextPurchase;
 
-    public ConfirmPurchaseV3(CartRepository cartRepository,
+    public ConfirmPurchaseV4(CartRepository cartRepository,
                              OrderRepository orderRepository,
                              ProductRepository productRepository,
-                             EmailNotifier emailNotifier) {
+                             EmailNotifier emailNotifier,
+                             DiscountNextPurchase discountNextPurchase) {
 
         this.cartRepository = cartRepository;
         this.orderRepository = orderRepository;
         this.productRepository = productRepository;
         this.emailNotifier = emailNotifier;
+        this.discountNextPurchase = discountNextPurchase;
     }
 
     public void confirm(CartId cartId, DiscountCode discountCode, Email email, Address address) {
@@ -45,6 +49,8 @@ public class ConfirmPurchaseV3 {
         orderRepository.save(order);
 
         emailNotifier.sendNotification(email);
+
+        discountNextPurchase.discount(discountCode);
     }
 
     private Cart getCart(CartId cartId) {

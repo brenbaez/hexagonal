@@ -1,5 +1,7 @@
 package com.hexagonal.shop.cart.domain;
 
+import com.hexagonal.shop.cart.domain.exception.InvalidCartState;
+import com.hexagonal.shop.cart.domain.exception.EmptyCartConfirmed;
 import com.hexagonal.shop.shared.domain.AggregateRoot;
 import com.hexagonal.shop.shared.domain.cart.PurchaseConfirmedDomainEvent;
 import com.hexagonal.shop.shared.domain.valueobject.Address;
@@ -29,7 +31,7 @@ public class Cart extends AggregateRoot {
 
     private void ensureHasState(CartState stateToCheck) {
         if (stateToCheck != state)
-            throw new IllegalStateException("Cart is in state " + state);
+            throw new InvalidCartState(state.name());
     }
 
     public CartDetail getDetail() {
@@ -52,7 +54,7 @@ public class Cart extends AggregateRoot {
 
     private void ensureCanBeConfirmed() {
         if (!hasProducts())
-            throw new IllegalStateException("Cannot confirm an empty cart");
+            throw new EmptyCartConfirmed();
         ensureHasState(CartState.OPEN);
     }
 

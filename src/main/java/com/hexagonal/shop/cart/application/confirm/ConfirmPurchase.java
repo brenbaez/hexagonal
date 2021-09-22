@@ -1,7 +1,7 @@
 package com.hexagonal.shop.cart.application.confirm;
 
 import com.hexagonal.shop.cart.domain.Cart;
-import com.hexagonal.shop.cart.domain.CartNotExist;
+import com.hexagonal.shop.cart.domain.exception.CartNotExist;
 import com.hexagonal.shop.cart.domain.CartRepository;
 import com.hexagonal.shop.shared.domain.bus.event.EventBus;
 import com.hexagonal.shop.shared.domain.valueobject.Address;

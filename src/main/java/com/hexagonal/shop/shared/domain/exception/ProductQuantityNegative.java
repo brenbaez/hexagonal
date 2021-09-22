@@ -1,4 +1,4 @@
-package com.hexagonal.shop.cart.domain;
+package com.hexagonal.shop.shared.domain.exception;
 
 import com.hexagonal.shop.shared.domain.DomainError;
 

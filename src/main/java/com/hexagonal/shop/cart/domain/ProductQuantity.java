@@ -1,5 +1,6 @@
 package com.hexagonal.shop.cart.domain;
 
+import com.hexagonal.shop.shared.domain.exception.ProductQuantityNegative;
 import com.hexagonal.shop.shared.domain.valueobject.IntValueObject;
 
 public class ProductQuantity extends IntValueObject {

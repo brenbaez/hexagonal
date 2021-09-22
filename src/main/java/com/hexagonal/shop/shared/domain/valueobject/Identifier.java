@@ -1,5 +1,7 @@
 package com.hexagonal.shop.shared.domain.valueobject;
 
+import com.hexagonal.shop.shared.domain.exception.InvalidIdentifier;
+
 import java.util.UUID;
 
 public class Identifier {

@@ -11,7 +11,7 @@ import com.hexagonal.shop.shared.domain.product.Product;
 import com.hexagonal.shop.shared.domain.valueobject.Address;
 import com.hexagonal.shop.shared.domain.valueobject.DiscountCode;
 import com.hexagonal.shop.shared.domain.valueobject.Email;
-import com.hexagonal.shop.shared.domain.valueobject.InvalidEmail;
+import com.hexagonal.shop.shared.domain.exception.InvalidEmail;
 import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
