@@ -18,10 +18,10 @@ public final class AddProductToCartUseCase {
         this.productRepository = productRepository;
     }
 
-    public void addProductToCart(CartId cartId, ProductId productId, ProductQuantity amount) {
+    public void addProductToCart(CartId cartId, ProductId productId, ProductQuantity quantity) {
         Cart cart = getCart(cartId);
         validateProductExistence(productId);
-        cart.add(productId, amount);
+        cart.add(productId, quantity);
 
         cartRepository.save(cart);
     }
