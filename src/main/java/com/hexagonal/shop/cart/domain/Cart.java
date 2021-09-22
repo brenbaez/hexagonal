@@ -32,7 +32,6 @@ public class Cart extends AggregateRoot {
             throw new IllegalStateException("Cart is in state " + state);
     }
 
-    // TODO: 9/18/2021 maybe this method could have another name? 
     public CartDetail getDetail() {
         return cartDetail;
     }
@@ -57,7 +56,7 @@ public class Cart extends AggregateRoot {
         ensureHasState(CartState.OPEN);
     }
 
-    public boolean isConfirmed(){
+    public boolean isConfirmed() {
         return CartState.CONFIRMED == state;
     }
 }

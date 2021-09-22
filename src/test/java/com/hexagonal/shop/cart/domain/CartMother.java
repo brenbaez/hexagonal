@@ -1,6 +1,7 @@
 package com.hexagonal.shop.cart.domain;
 
-import java.util.Random;
+import com.hexagonal.shop.shared.domain.ProductIdMother;
+import com.hexagonal.shop.shared.domain.ProductQuantityMother;
 
 public class CartMother {
 
@@ -10,9 +11,8 @@ public class CartMother {
 
     public static Cart withData() {
         Cart cart = new Cart(CartIdMother.random());
-        Random random = new Random();
-        cart.add(ProductIdMother.random(), new ProductQuantity(random.nextInt(100) + 1));
-        cart.add(ProductIdMother.random(), new ProductQuantity(random.nextInt(100) + 1));
+        cart.add(ProductIdMother.random(), ProductQuantityMother.randomProductQuantity());
+        cart.add(ProductIdMother.random(), ProductQuantityMother.randomProductQuantity());
         return cart;
     }
 }
