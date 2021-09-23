@@ -1,8 +1,8 @@
 package com.hexagonal.shop.order.domain;
 
 import com.hexagonal.shop.cart.domain.ProductQuantity;
-import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 import com.hexagonal.shop.shared.domain.product.Product;
+import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,7 +24,7 @@ public class OrderLines {
                 .collect(Collectors.toList());
     }
 
-    public Integer getTotalPrice(){
+    public Integer getTotalPrice() {
         return orderLines.stream().map(OrderLine::getPrice).reduce(Integer::sum)
                 .orElse(0);
     }

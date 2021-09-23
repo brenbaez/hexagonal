@@ -2,11 +2,11 @@ package com.hexagonal.shop.cart.application.addtocart;
 
 import com.hexagonal.shop.cart.domain.CartMother;
 import com.hexagonal.shop.cart.domain.CartRepository;
-import com.hexagonal.shop.cart.domain.ProductIdMother;
-import com.hexagonal.shop.cart.domain.ProductMother;
-import com.hexagonal.shop.cart.domain.ProductNotExist;
+import com.hexagonal.shop.shared.domain.exception.ProductNotExist;
 import com.hexagonal.shop.cart.domain.ProductQuantity;
 import com.hexagonal.shop.cart.domain.ProductRepository;
+import com.hexagonal.shop.shared.domain.ProductIdMother;
+import com.hexagonal.shop.shared.domain.ProductMother;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.mockito.Mockito;
@@ -38,39 +38,41 @@ class AddProductToCartUseCaseTest {
     void shouldAddNewProductToEmptyCart() {
         var cart = CartMother.empty();
         var cartId = cart.getId();
-        var product = ProductMother.empty();
+        var product = ProductMother.randomProduct();
         var productId = product.getProductId();
-        var amount = new ProductQuantity(1);
+        var quantity = new ProductQuantity(1);
 
         when(cartRepository.get(cartId)).thenReturn(Optional.of(cart));
         when(productRepository.get(productId)).thenReturn(Optional.of(product));
 
-        useCaseSUT.addProductToCart(cartId, productId, amount);
+        useCaseSUT.addProductToCart(cartId, productId, quantity);
 
         verify(cartRepository, times(1)).save(cart);
 
         var cartDetail = cart.getDetail();
-        assertEquals(amount.value(), cartDetail.total());
+        assertEquals(quantity.value(), cartDetail.total());
     }
 
     @Test
     void shouldAddNewProductToExistentCart() {
         var cart = CartMother.withData();
         var cartId = cart.getId();
-        var product = ProductMother.empty();
+        var product = ProductMother.randomProduct();
         var productId = product.getProductId();
-        var amount = new ProductQuantity(1);
+        var quantity = new ProductQuantity(1);
         var currentTotal = cart.getDetail().total();
+        var expectedTotal = currentTotal + quantity.value();
 
         when(cartRepository.get(cartId)).thenReturn(Optional.of(cart));
         when(productRepository.get(productId)).thenReturn(Optional.of(product));
 
-        useCaseSUT.addProductToCart(cartId, productId, amount);
+        useCaseSUT.addProductToCart(cartId, productId, quantity);
 
         verify(cartRepository, times(1)).save(cart);
 
         var cartDetail = cart.getDetail();
-        assertEquals(currentTotal + amount.value(), cartDetail.total());
+
+        assertEquals(expectedTotal, cartDetail.total());
     }
 
     @Test

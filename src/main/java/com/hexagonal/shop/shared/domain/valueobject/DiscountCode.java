@@ -1,5 +1,7 @@
 package com.hexagonal.shop.shared.domain.valueobject;
 
+import com.hexagonal.shop.shared.domain.exception.InvalidDiscountCode;
+
 public class DiscountCode extends StringValueObject {
     public DiscountCode(String value) {
         super(value);

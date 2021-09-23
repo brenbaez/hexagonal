@@ -1,5 +1,6 @@
 package com.hexagonal.shop.cart.domain;
 
+import com.hexagonal.shop.shared.domain.exception.ProductQuantityNegative;
 import com.hexagonal.shop.shared.domain.valueobject.IntValueObject;
 
 public class ProductQuantity extends IntValueObject {
@@ -11,5 +12,9 @@ public class ProductQuantity extends IntValueObject {
     protected void ensureValid(Integer value) {
         if (value <= 0)
             throw new ProductQuantityNegative(value);
+    }
+
+    public ProductQuantity plus(ProductQuantity quantity){
+        return new ProductQuantity(value() + quantity.value());
     }
 }
