@@ -13,4 +13,8 @@ public class ProductQuantity extends IntValueObject {
         if (value <= 0)
             throw new ProductQuantityNegative(value);
     }
+
+    public ProductQuantity plus(ProductQuantity quantity){
+        return new ProductQuantity(value() + quantity.value());
+    }
 }

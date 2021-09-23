@@ -61,6 +61,7 @@ class AddProductToCartUseCaseTest {
         var productId = product.getProductId();
         var quantity = new ProductQuantity(1);
         var currentTotal = cart.getDetail().total();
+        var expectedTotal = currentTotal + quantity.value();
 
         when(cartRepository.get(cartId)).thenReturn(Optional.of(cart));
         when(productRepository.get(productId)).thenReturn(Optional.of(product));
@@ -70,7 +71,8 @@ class AddProductToCartUseCaseTest {
         verify(cartRepository, times(1)).save(cart);
 
         var cartDetail = cart.getDetail();
-        assertEquals(currentTotal + quantity.value(), cartDetail.total());
+
+        assertEquals(expectedTotal, cartDetail.total());
     }
 
     @Test
