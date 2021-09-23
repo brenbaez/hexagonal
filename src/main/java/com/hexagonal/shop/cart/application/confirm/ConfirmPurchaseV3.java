@@ -40,7 +40,7 @@ public class ConfirmPurchaseV3 {
         cart.confirm(discountCode, email, address);
         cartRepository.save(cart);
 
-        List<Product> products = get(cart.getDetail().getProducts().keySet());
+        List<Product> products = getProducts(cart.getDetail().getProducts().keySet());
         Order order = new Order(products, cart.getDetail().getProducts(), address, discountCode, email);
         orderRepository.save(order);
 
@@ -51,7 +51,7 @@ public class ConfirmPurchaseV3 {
         return cartRepository.get(cartId).orElseThrow(() -> new CartNotExist(cartId));
     }
 
-    private List<Product> get(Set<ProductId> productIds) {
+    private List<Product> getProducts(Set<ProductId> productIds) {
         return productRepository.getAll(productIds);
     }
 }

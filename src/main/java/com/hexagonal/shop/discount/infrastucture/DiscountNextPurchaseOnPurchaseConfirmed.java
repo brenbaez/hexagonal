@@ -16,6 +16,6 @@ public class DiscountNextPurchaseOnPurchaseConfirmed {
 
     @EventListener
     public void on(PurchaseConfirmedDomainEvent event) {
-        discountNextPurchase.discount(event.getDiscountCode());
+        discountNextPurchase.discount(event.getDiscountCode(), event.getEmail());
     }
 }

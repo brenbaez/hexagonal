@@ -39,14 +39,14 @@ class OrderCreatorTest {
     private OrderRepository orderRepository;
     private ProductRepository productRepository;
     private OrderCreator useCaseSUT;
-    Product product1;
-    Product product2;
-    Product product3;
-    List<Product> products;
-    Set<ProductId> productIds;
-    Map<ProductId, ProductQuantity> quantityPerProduct;
-    DiscountCode discountCode;
-    Address address;
+    private Product product1;
+    private Product product2;
+    private Product product3;
+    private List<Product> products;
+    private Set<ProductId> productIds;
+    private Map<ProductId, ProductQuantity> quantityPerProduct;
+    private DiscountCode discountCode;
+    private Address address;
 
     @BeforeEach
     void setUp() {
@@ -68,7 +68,7 @@ class OrderCreatorTest {
     @Test
     void shouldCreateAnOrder() {
 
-        Email email = new Email("test@teracode.com");
+        Email email = new Email("test@gmail.com");
 
         Order order = OrderMother.withData(products, quantityPerProduct, discountCode, address, email);
 
@@ -85,10 +85,10 @@ class OrderCreatorTest {
     void shouldCreateAnOrderWithValidEmails() {
 
         List<Email> emails = Stream.of(
-                new Email("test@teracode.com"),
+                new Email("test@mymail.com"),
                 new Email("first.last@iana.org"),
                 new Email("wo..oly@iana.org"),
-                new Email("Tera@Code.com"))
+                new Email("new@Email.com"))
                 .collect(Collectors.toList());
 
         emails.forEach(email -> {
@@ -108,10 +108,10 @@ class OrderCreatorTest {
     @Test
     void shouldFailInvalidEmail() {
 
-        String invalidEmail = "ivalid@teracode.1234";
+        String invalidEmail = "ivalid@email.1234";
 
         Exception exception = assertThrows(InvalidEmail.class, () -> {
-            useCaseSUT.create(quantityPerProduct, address, discountCode, new Email("ivalid@teracode.1234"));
+            useCaseSUT.create(quantityPerProduct, address, discountCode, new Email(invalidEmail));
         });
 
         String expectedMessage = "<" + invalidEmail + "> is not a valid email";
@@ -126,7 +126,7 @@ class OrderCreatorTest {
 //    @Test
 //    void shouldCreateAnOrderEmailSuffixNumericNumber() {
 //
-//        Email validEmail = new Email("valid@teracode.1234");
+//        Email validEmail = new Email("valid@email.1234");
 //
 //        Order order = OrderMother.withData(products, quantityPerProduct, discountCode, address, validEmail);
 //

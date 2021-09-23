@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.util.Map;
 
 @RestController
 public class AddProductToCartController {
@@ -22,14 +23,14 @@ public class AddProductToCartController {
     }
 
     @PostMapping("/cart")
-    public ResponseEntity<HttpStatus> addProductToCart(@RequestBody @Valid CartRequest request) {
+    public ResponseEntity<Map<String, Object>> addProductToCart(@RequestBody @Valid AddProductToCartRequest request) {
 
         addProductToCartUseCase.addProductToCart(
                 new CartId(request.getCartId()),
                 new ProductId(request.getProductId()),
                 new ProductQuantity(request.getQuantity()));
 
-        return ResponseEntity.ok(HttpStatus.CREATED);
+        return ResponseEntity.ok().build();
     }
 
 }
