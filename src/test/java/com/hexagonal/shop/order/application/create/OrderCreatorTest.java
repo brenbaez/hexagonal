@@ -7,11 +7,11 @@ import com.hexagonal.shop.order.domain.ProductRepository;
 import com.hexagonal.shop.order.domain.create.OrderMother;
 import com.hexagonal.shop.shared.domain.ProductMother;
 import com.hexagonal.shop.shared.domain.ProductQuantityMother;
+import com.hexagonal.shop.shared.domain.exception.InvalidEmail;
 import com.hexagonal.shop.shared.domain.product.Product;
 import com.hexagonal.shop.shared.domain.valueobject.Address;
 import com.hexagonal.shop.shared.domain.valueobject.DiscountCode;
 import com.hexagonal.shop.shared.domain.valueobject.Email;
-import com.hexagonal.shop.shared.domain.exception.InvalidEmail;
 import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.junit.jupiter.api.BeforeEach;
@@ -82,13 +82,13 @@ class OrderCreatorTest {
     }
 
     @Test
-    void shouldCreateAnOrderWithValidEmails() {
+    void shouldCreateAnOrderWithEmailsFinishingWithLetters() {
 
         List<Email> emails = Stream.of(
-                new Email("test@mymail.com"),
-                new Email("first.last@iana.org"),
-                new Email("wo..oly@iana.org"),
-                new Email("new@Email.com"))
+                        new Email("test@mymail.com"),
+                        new Email("first.last@iana.org"),
+                        new Email("wo..oly@iana.org"),
+                        new Email("new@Email.com"))
                 .collect(Collectors.toList());
 
         emails.forEach(email -> {
@@ -106,7 +106,7 @@ class OrderCreatorTest {
     }
 
     @Test
-    void shouldFailInvalidEmail() {
+    void shouldNotCreateAnOrderWithEmailsFinishingWithDigits() {
 
         String invalidEmail = "ivalid@email.1234";
 

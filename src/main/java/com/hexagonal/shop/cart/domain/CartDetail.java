@@ -2,6 +2,7 @@ package com.hexagonal.shop.cart.domain;
 
 import com.hexagonal.shop.shared.domain.valueobject.ProductId;
 
+import java.util.Collections;
 import java.util.HashMap;
 import java.util.Map;
 
@@ -13,7 +14,7 @@ public class CartDetail {
         products = newProducts;
     }
 
-    public Integer total() {
+    public Integer totalProductQuantity() {
         return products.values()
                 .stream()
                 .map(ProductQuantity::value)
@@ -22,7 +23,7 @@ public class CartDetail {
     }
 
     public Map<ProductId, ProductQuantity> getProducts() {
-        return products;
+        return Collections.unmodifiableMap(products);
     }
 
     public CartDetail withNewProducts(ProductId productId, ProductQuantity quantity) {

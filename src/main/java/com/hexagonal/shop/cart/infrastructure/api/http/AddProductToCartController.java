@@ -4,7 +4,6 @@ import com.hexagonal.shop.cart.application.addtocart.AddProductToCartUseCase;
 import com.hexagonal.shop.cart.domain.ProductQuantity;
 import com.hexagonal.shop.shared.domain.valueobject.CartId;
 import com.hexagonal.shop.shared.domain.valueobject.ProductId;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;

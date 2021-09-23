@@ -1,7 +1,7 @@
 package com.hexagonal.shop.cart.domain;
 
+import com.hexagonal.shop.cart.domain.exception.EmptyCartCannotBeConfirmed;
 import com.hexagonal.shop.cart.domain.exception.InvalidCartState;
-import com.hexagonal.shop.cart.domain.exception.EmptyCartConfirmed;
 import com.hexagonal.shop.shared.domain.AggregateRoot;
 import com.hexagonal.shop.shared.domain.cart.PurchaseConfirmedDomainEvent;
 import com.hexagonal.shop.shared.domain.valueobject.Address;
@@ -24,9 +24,9 @@ public class Cart extends AggregateRoot {
         state = CartState.OPEN;
     }
 
-    public void add(ProductId productId, ProductQuantity amount) {
+    public void add(ProductId productId, ProductQuantity productQuantity) {
         ensureHasState(CartState.OPEN);
-        cartDetail = cartDetail.withNewProducts(productId, amount);
+        cartDetail = cartDetail.withNewProducts(productId, productQuantity);
     }
 
     private void ensureHasState(CartState stateToCheck) {
@@ -43,7 +43,7 @@ public class Cart extends AggregateRoot {
     }
 
     public boolean hasProducts() {
-        return !cartDetail.total().equals(0);
+        return !cartDetail.totalProductQuantity().equals(0);
     }
 
     public void confirm(DiscountCode discountCode, Email email, Address address) {
@@ -54,7 +54,7 @@ public class Cart extends AggregateRoot {
 
     private void ensureCanBeConfirmed() {
         if (!hasProducts())
-            throw new EmptyCartConfirmed();
+            throw new EmptyCartCannotBeConfirmed();
         ensureHasState(CartState.OPEN);
     }
 

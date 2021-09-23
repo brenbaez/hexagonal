@@ -10,7 +10,7 @@ import java.util.Optional;
 
 public class CachedCartRepository implements CartRepository {
 
-    private Map<String, Cart> cachedCarts = new HashMap<>();
+    private Map<CartId, Cart> cachedCarts = new HashMap<>();
 
     private CartRepository cartRepository;
 
@@ -20,20 +20,20 @@ public class CachedCartRepository implements CartRepository {
 
     @Override
     public Optional<Cart> get(CartId cartId) {
-        var cachedCart = cachedCarts.get(cartId.value());
+        var cachedCart = cachedCarts.get(cartId);
         if (cachedCart != null)
             return Optional.of(cachedCart);
 
         Optional<Cart> cachedCartOpt = cartRepository.get(cartId);
 
-        cachedCartOpt.ifPresent(cart -> cachedCarts.put(cartId.value(), cart));
+        cachedCartOpt.ifPresent(cart -> cachedCarts.put(cartId, cart));
 
         return cachedCartOpt;
     }
 
     @Override
     public void save(Cart cart) {
-        cachedCarts.put(cart.getId().value(), cart);
+        cachedCarts.put(cart.getId(), cart);
         cartRepository.save(cart);
     }
 }

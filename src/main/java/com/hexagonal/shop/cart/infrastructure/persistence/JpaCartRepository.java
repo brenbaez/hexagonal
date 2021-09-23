@@ -35,6 +35,7 @@ public class JpaCartRepository implements CartRepository {
         Optional<CartEntity> cartEntityOp = hibernateCartRepository.findById(cartId.value());
         if (cartEntityOp.isEmpty())
             return Optional.empty();
+        
         CartEntity cartEntity = cartEntityOp.get();
         Cart cart = new Cart(new CartId(cartEntity.getId()));
         List<ProductQuantityEntity> products = cartEntity.getProducts();
